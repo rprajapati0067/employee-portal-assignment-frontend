@@ -47,9 +47,17 @@
                 class="form-control"
                 id="firstName"
                 name="firstName"
+                firstName
+                required
+                #firstName="ngModel"
                 [(ngModel)]="employee.firstName"
                 placeholder="First Name"
               />
+              <span
+                class="help-block invalid"
+                *ngIf="!firstName.valid && firstName.touched"
+                >First Name should not be empty</span
+              >
             </div>
             <div class="form-group ">
               <label for="lastName">Last Name</label>
@@ -58,10 +66,17 @@
                 class="form-control"
                 id="lastName"
                 name="lastName"
-                #name="ngModel"
+                required
+                lastName
+                #lastName="ngModel"
                 [(ngModel)]="employee.lastName"
                 placeholder="Last Name"
               />
+              <span
+                class="help-block invalid"
+                *ngIf="!lastName.valid && lastName.touched"
+                >Last Name should not be empty</span
+              >
             </div>
 
             <div class="form-group">
@@ -71,7 +86,6 @@
                   class="form-check-input"
                   type="radio"
                   name="gender"
-                  #name="ngModel"
                   [(ngModel)]="employee.gender"
                   [value]="gender"
                 />
@@ -85,10 +99,17 @@
                 class="form-control"
                 [(ngModel)]="employee.dateOfBirth"
                 name="dateOfBirth"
-                #name="ngModel"
+                required
+                dateOfBirth
+                #dateOfBirth="ngModel"
                 id="dateOfBirth"
                 placeholder="Date of birth"
               />
+              <span
+                class="help-block invalid"
+                *ngIf="!dateOfBirth.valid && dateOfBirth.touched"
+                >Date Of Birth should not be empty</span
+              >
             </div>
 
             <div class="form-group">
@@ -99,9 +120,16 @@
                 id="department"
                 [(ngModel)]="employee.department"
                 name="department"
-                #name="ngModel"
+                required
+                department
+                #department="ngModel"
                 placeholder="Department"
               />
+              <span
+                class="help-block invalid"
+                *ngIf="!department.valid && department.touched"
+                >Department should not be empty</span
+              >
             </div>
 
             <button
@@ -109,6 +137,7 @@
               class="btn btn-primary btn btn-primary btn-lg btn-block"
               (click)="onSubmit()"
               data-dismiss="modal"
+              [disabled]="!employeeForm.valid"
             >
               Save
             </button>

@@ -2,3 +2,10 @@
   margin-bottom: 0;
   padding: 2px;
 }
+.invalid {
+  color: red;
+  border: 2;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
